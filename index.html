@@ -1,185 +1,137 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Valentine 💘</title>
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: grid;
-            place-items: center;
-            background: linear-gradient(135deg, #ffd6e8, #fff2cc);
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valentine 💘</title>
 
-        .card {
-            width: min(760px, 92vw);
-            background: #fff;
-            padding: 54px 44px;
-            border-radius: 28px;
-            text-align: center;
-            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.14);
-        }
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #ffd6e8, #fff2cc);
+      font-family: Arial, sans-serif;
+    }
 
-        h1 {
-            margin: 0 0 14px;
-            font-size: 44px;
-            letter-spacing: -0.5px;
-        }
+    .card {
+      width: min(760px, 92vw);
+      background: #fff;
+      padding: 54px 44px;
+      border-radius: 28px;
+      text-align: center;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.14);
+    }
 
-        p {
-            margin: 0 0 34px;
-            font-size: 20px;
-            opacity: 0.85;
-        }
+    h1 {
+      margin: 0 0 14px;
+      font-size: 44px;
+    }
 
-        /* Area where the No button can escape */
-        .playground {
-            width: 520px;
-            max-width: 86vw;
-            height: 190px;
-            margin: 0 auto;
-            position: relative;
-        }
+    p {
+      margin: 0 0 34px;
+      font-size: 20px;
+      opacity: 0.85;
+    }
 
-        /* Yes starts centered; No starts right of it */
-        .row {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            /* 👈 αριστερά */
-            padding-left: 60px;
-            /* 👈 απόσταση από άκρη */
-        }
+    .playground {
+      width: 520px;
+      max-width: 86vw;
+      height: 190px;
+      margin: 0 auto;
+      position: relative;
+    }
 
-        button {
-            border: 0;
-            border-radius: 999px;
-            width: 200px;
-            /* symmetric width */
-            height: 64px;
-            /* symmetric height */
-            font-size: 20px;
-            font-weight: 700;
-            cursor: pointer;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-            transition: transform 0.08s ease, box-shadow 0.2s ease, filter 0.2s ease;
-        }
+    .row {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 60px;
+    }
 
-        button:active {
-            transform: scale(0.98);
-        }
+    button {
+      border: 0;
+      border-radius: 999px;
+      width: 200px;
+      height: 64px;
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.08s ease, box-shadow 0.2s ease;
+    }
 
-        #yes {
-            background: #ff2d55;
-            color: white;
-            box-shadow: 0 14px 34px rgba(255, 45, 85, 0.30);
-        }
+    button:active {
+      transform: scale(0.98);
+    }
 
-        #yes:hover {
-            filter: brightness(0.98);
-        }
+    #yes {
+      background: #ff2d55;
+      color: white;
+      box-shadow: 0 14px 34px rgba(255,45,85,0.30);
+    }
 
-        /* No is absolute but starts aligned with Yes */
-        #no {
-            background: #d1d5db;
-            /* medium gray */
-            color: #111827;
-            position: absolute;
-            left: 280px;
-            /* start to the right of Yes */
-            top: 63px;
-            /* aligned vertically in the playground */
-            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.10);
-        }
+    #no {
+      background: #d1d5db;
+      color: #111827;
+      position: absolute;
+      left: 280px;
+      top: 63px;
+      box-shadow: 0 14px 34px rgba(0,0,0,0.10);
+    }
 
-        #result {
-            margin-top: 28px;
-            font-weight: 800;
-            font-size: 22px;
-            min-height: 26px;
-        }
-
-        @media (max-width: 420px) {
-            h1 {
-                font-size: 34px;
-            }
-
-            p {
-                font-size: 18px;
-            }
-
-            button {
-                width: 170px;
-                height: 58px;
-                font-size: 18px;
-            }
-
-            .playground {
-                height: 200px;
-            }
-
-            #no {
-                left: 240px;
-                top: 70px;
-            }
-        }
-    </style>
+    @media (max-width: 420px) {
+      h1 { font-size: 34px; }
+      p  { font-size: 18px; }
+      button { width: 170px; height: 58px; font-size: 18px; }
+      .playground { height: 200px; }
+      #no { left: 240px; top: 70px; }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="card">
-        <h1>Will you be my Valentine? 💖</h1>
-        <p>Be honest 😌</p>
+  <div class="card">
+    <h1>Will you be my Valentine? 💖</h1>
+    <p>Be honest 😌</p>
 
-        <div class="playground" id="playground">
-            <div class="row">
-                <button id="yes">Yes 💘</button>
-            </div>
-            <button id="no">No</button>
-        </div>
-
-        <div id="result"></div>
+    <div class="playground" id="playground">
+      <div class="row">
+        <button id="yes">Yes 💘</button>
+      </div>
+      <button id="no">No</button>
     </div>
+  </div>
 
-    <script>
-        const playground = document.getElementById("playground");
-        const noBtn = document.getElementById("no");
-        const yesBtn = document.getElementById("yes");
-        const result = document.getElementById("result");
+  <script>
+    const playground = document.getElementById("playground");
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
 
-        function moveNo() {
-            const pad = 10; // keep it off the edges
-            const maxX = playground.clientWidth - noBtn.offsetWidth - pad;
-            const maxY = playground.clientHeight - noBtn.offsetHeight - pad;
+    function moveNo() {
+      const pad = 10;
+      const maxX = playground.clientWidth - noBtn.offsetWidth - pad;
+      const maxY = playground.clientHeight - noBtn.offsetHeight - pad;
 
-            const x = pad + Math.random() * Math.max(0, maxX);
-            const y = pad + Math.random() * Math.max(0, maxY);
+      noBtn.style.left = (pad + Math.random() * Math.max(0, maxX)) + "px";
+      noBtn.style.top  = (pad + Math.random() * Math.max(0, maxY)) + "px";
+    }
 
-            noBtn.style.left = x + "px";
-            noBtn.style.top = y + "px";
-        }
+    noBtn.addEventListener("mouseenter", moveNo);
+    noBtn.addEventListener("mousemove", moveNo);
+    noBtn.addEventListener("touchstart", e => {
+      e.preventDefault();
+      moveNo();
+    }, { passive: false });
 
-        // Desktop: escape continuously
-        noBtn.addEventListener("mouseenter", moveNo);
-        noBtn.addEventListener("mousemove", moveNo);
-
-        // Mobile: escape on touch
-        noBtn.addEventListener("touchstart", (e) => {
-            e.preventDefault();
-            moveNo();
-        }, { passive: false });
-
-        yesBtn.addEventListener("click", () => {
-            result.textContent = "Correct answer 💞";
-        });
-    </script>
+    // 🔥 ΤΟ ΣΗΜΑΝΤΙΚΟ
+    yesBtn.addEventListener("click", () => {
+      window.location.href = "yes.html";
+    });
+  </script>
 </body>
-
 </html>
