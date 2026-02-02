@@ -45,14 +45,14 @@
     }
 
     /* Yes starts centered; No starts right of it */
-    .row {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 26px;
-    }
+   .row {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* 👈 αριστερά */
+  padding-left: 60px;          /* 👈 απόσταση από άκρη */
+}
 
     button {
       border: 0;
@@ -82,7 +82,7 @@
       background: #f2f2f2;
       color: #222;
       position: absolute;
-      left: 300px;  /* start to the right of Yes */
+      left: 350px;  /* start to the right of Yes */
       top: 63px;    /* aligned vertically in the playground */
       box-shadow: 0 14px 34px rgba(0,0,0,0.10);
     }
