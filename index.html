@@ -15,74 +15,91 @@
     }
 
     .card {
-      width: min(520px, 92vw);
+      width: min(760px, 92vw);
       background: #fff;
-      padding: 34px 28px;
-      border-radius: 22px;
+      padding: 54px 44px;
+      border-radius: 28px;
       text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.14);
     }
 
     h1 {
-      margin: 0 0 10px;
-      font-size: 30px;
+      margin: 0 0 14px;
+      font-size: 44px;
+      letter-spacing: -0.5px;
     }
 
     p {
-      margin: 0 0 22px;
-      font-size: 16px;
+      margin: 0 0 34px;
+      font-size: 20px;
       opacity: 0.85;
     }
 
-    /* The area where the No button can escape */
+    /* Area where the No button can escape */
     .playground {
-      width: 320px;
-      max-width: 80vw;
-      height: 130px;
+      width: 520px;
+      max-width: 86vw;
+      height: 190px;
       margin: 0 auto;
       position: relative;
     }
 
-    /* Buttons start aligned correctly */
+    /* Yes starts centered; No starts right of it */
     .row {
       position: absolute;
       inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 18px;
+      gap: 26px;
     }
 
     button {
       border: 0;
       border-radius: 999px;
-      padding: 12px 20px;
-      font-size: 16px;
+      width: 200px;     /* symmetric width */
+      height: 64px;     /* symmetric height */
+      font-size: 20px;
+      font-weight: 700;
       cursor: pointer;
       user-select: none;
       -webkit-tap-highlight-color: transparent;
+      transition: transform 0.08s ease, box-shadow 0.2s ease, filter 0.2s ease;
     }
+
+    button:active { transform: scale(0.98); }
 
     #yes {
       background: #ff2d55;
       color: white;
-      box-shadow: 0 10px 25px rgba(255,45,85,0.35);
+      box-shadow: 0 14px 34px rgba(255,45,85,0.30);
     }
 
-    /* No is absolute but starts at a fixed "right of yes" location */
+    #yes:hover { filter: brightness(0.98); }
+
+    /* No is absolute but starts aligned with Yes */
     #no {
       background: #f2f2f2;
       color: #222;
       position: absolute;
-      left: 220px;   /* initial position: right of Yes */
-      top: 44px;     /* initial position: aligned vertically */
-      box-shadow: 0 10px 25px rgba(0,0,0,0.10);
+      left: 300px;  /* start to the right of Yes */
+      top: 63px;    /* aligned vertically in the playground */
+      box-shadow: 0 14px 34px rgba(0,0,0,0.10);
     }
 
     #result {
-      margin-top: 18px;
-      font-weight: 700;
-      min-height: 22px;
+      margin-top: 28px;
+      font-weight: 800;
+      font-size: 22px;
+      min-height: 26px;
+    }
+
+    @media (max-width: 420px) {
+      h1 { font-size: 34px; }
+      p  { font-size: 18px; }
+      button { width: 170px; height: 58px; font-size: 18px; }
+      .playground { height: 200px; }
+      #no { left: 240px; top: 70px; }
     }
   </style>
 </head>
@@ -108,7 +125,7 @@
     const result = document.getElementById("result");
 
     function moveNo() {
-      const pad = 6; // small padding from edges
+      const pad = 10; // keep it off the edges
       const maxX = playground.clientWidth - noBtn.offsetWidth - pad;
       const maxY = playground.clientHeight - noBtn.offsetHeight - pad;
 
@@ -119,11 +136,11 @@
       noBtn.style.top = y + "px";
     }
 
-    // Desktop: when cursor approaches, it keeps escaping
+    // Desktop: escape continuously
     noBtn.addEventListener("mouseenter", moveNo);
     noBtn.addEventListener("mousemove", moveNo);
 
-    // Mobile: when finger touches it, it escapes
+    // Mobile: escape on touch
     noBtn.addEventListener("touchstart", (e) => {
       e.preventDefault();
       moveNo();
