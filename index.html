@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valentine 💘</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #ffd6e8, #fff2cc);
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      width: min(520px, 92vw);
+      background: #fff;
+      padding: 34px 28px;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 30px;
+    }
+
+    p {
+      margin: 0 0 22px;
+      font-size: 16px;
+      opacity: 0.85;
+    }
+
+    /* The area where the No button can escape */
+    .playground {
+      width: 320px;
+      max-width: 80vw;
+      height: 130px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Buttons start aligned correctly */
+    .row {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #yes {
+      background: #ff2d55;
+      color: white;
+      box-shadow: 0 10px 25px rgba(255,45,85,0.35);
+    }
+
+    /* No is absolute but starts at a fixed "right of yes" location */
+    #no {
+      background: #f2f2f2;
+      color: #222;
+      position: absolute;
+      left: 190px;   /* initial position: right of Yes */
+      top: 44px;     /* initial position: aligned vertically */
+      box-shadow: 0 10px 25px rgba(0,0,0,0.10);
+    }
+
+    #result {
+      margin-top: 18px;
+      font-weight: 700;
+      min-height: 22px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Will you be my Valentine? 💖</h1>
+    <p>Be honest 😌</p>
+
+    <div class="playground" id="playground">
+      <div class="row">
+        <button id="yes">Yes 💘</button>
+      </div>
+      <button id="no">No</button>
+    </div>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const playground = document.getElementById("playground");
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const result = document.getElementById("result");
+
+    function moveNo() {
+      const pad = 6; // small padding from edges
+      const maxX = playground.clientWidth - noBtn.offsetWidth - pad;
+      const maxY = playground.clientHeight - noBtn.offsetHeight - pad;
+
+      const x = pad + Math.random() * Math.max(0, maxX);
+      const y = pad + Math.random() * Math.max(0, maxY);
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    // Desktop: when cursor approaches, it keeps escaping
+    noBtn.addEventListener("mouseenter", moveNo);
+    noBtn.addEventListener("mousemove", moveNo);
+
+    // Mobile: when finger touches it, it escapes
+    noBtn.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      moveNo();
+    }, { passive: false });
+
+    yesBtn.addEventListener("click", () => {
+      result.textContent = "Correct answer 💞";
+    });
+  </script>
+</body>
+</html>
